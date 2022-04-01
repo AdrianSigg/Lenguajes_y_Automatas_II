@@ -1,0 +1,83 @@
+https://docs.google.com/document/d/1bztQaKdmZujFIlpEzdkCK2uyJC8Uub3q/edit
+
+PROABLEMENTE TENGAS QUE ENCONTRAR LA MANERA DE ESPECIFICAR QUE TU $ NO ES EL 
+MISMO QUE EL QUE PERMITE AL PROGRAMA TERMINAR
+/*Se define la matriz predictiva como un arreglo multidensional*/
+/*Se crea tabla de terminales y no terminales*/
+
+1.- Meta: Escribir("Programa que funge como analizador sintactico");
+
+2.- Datos: Escribe("Ingrese cadena a analizar");
+		   cadena = ?;
+		   
+3.- Calculos: //Se crea un objeto de tipo Tablas y así
+			  crear las tablas para el analisis
+			  tablaobj.automata();
+			  /*Se guarda uno por uno en orden los tokens
+			  de la tablahash (dato) en la pila W*/
+			  /*Se tendrá otra pila para los valores de X*/
+			  
+			  repetir
+			  si x es un terminal o $ empezar
+			    si x=a empezar 
+			    //extrae x de la pila y avanza ae
+			    terminar de otro modo error();
+			  terminar de otro modo /* x es un no terminal */ empezar
+			  
+			    /*Se toma el valor de X(pila) y el de W(entrada) y se evalúan
+				en dos switch, donde podremos establecer valores a los indices
+				y poder evaluar en la matriz predictiva*/
+			    si M[X,a]=X y X=Y1Y2…Yk empezar
+			    /*emitir la producción X →Y1Y2…Yk extrae X de la pila 
+			    e introduce Yk …Y2Y1 en la pila, Y1en la cima;*/
+			    terminar
+			  tarminar de otro modo error()
+			  hasta x=$ /* la pila esta vacía y la cadena es válida*/
+			  
+4.- Resultado: 
+			si calculos = true empezar
+			  //mostrar hashtables
+			tarminar de otro modo
+			  Escribe("ERROR");
+			  
+5.- Navegabilidad: No hay
+
+
+
+-----Ejemplo de switch-----
+String key ="L", key2 = "l";
+int aux=0, aux2=0;
+switch (key) {
+        case "L":
+            aux = 1;
+            break;
+    
+        default:
+            break;
+    }
+
+    switch (key2) {
+        case "l":
+            aux2 = 0;
+            break;
+    
+        default:
+            break;
+    }
+	
+System.out.println(obj.matrizPredictiva[aux][aux2]);
+
+--------------------------------------------------
+agregar pilaW
+    for (int i = 1; i < tablaObj.tokenHashtable.size()+1; i++) {
+      splitted = tablaObj.tokenHashtable.get(i).split(",");
+      pilaW.insert(splitted[1]);
+    }
+	
+------------------MAtriz-------------------
+{"S","L","Z","Z'","M","E","P","T","W","F","H","I",
+"I'","N","N'","V","C","O","K","G","A","B"};
+
+{"Lib-",".lib","$","#","=","a","b","c","main","Mientras",
+"Repetir","Haz","Imp->","==",">=","<=","!","++","--",
+"**","//","%%",".-",".+","1","2","3",",","}",">","\""};

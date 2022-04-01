@@ -1,0 +1,27 @@
+El programa debe funcionar con el analizador lexico, llamar un token
+a la vez, tal vez lo mejor sea usar el analizador lexico y que
+llame directamente al analizador sintactico.
+
+1.-Deberán incluir la clase llamada Tablas y la Pila dinámica que 
+   ya han codificado
+2.-Finalmente deberá incluir el archivo con el programa que será 
+   analizado desde el punto de vista Léxico - Sintáctico.
+3.-Ninguna parte de este proyecto debe tener interfaz gráfica.
+
+Un archivo de texto que debe contener lo que a continuación se muestra y en el mismo orden que se menciona.
+
+1.-Hoja de presentación que incluya, nombre de la materia, nombre 
+   del proyecto, nombre de los alumnos que entregan y fecha.
+
+2.-El contenido de las estructuras de Símbolos Terminales, Símbolos 
+   No Terminales y Lados Derechos de la gramática contenidas en la clase Tablas.
+
+3.-Matriz predictiva que también se debe encontrar en la clase 
+   Tablas.
+
+4.-Programa para analizar (el que escribe el programador)
+
+5.-Corrida paso a paso del análisis Léxico-Sintáctico
+
+6.-URL correspondiente para visualizar el vídeo debe aparecer a 
+   cuadro en todo momento durante el vídeo. Dicho vídeo deberá tener una duración máxima de 15 minutos

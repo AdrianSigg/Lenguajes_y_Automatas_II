@@ -1,0 +1,34 @@
+Leer una cadena completa (tal vez con algun buffer) intentar leer
+la cadena hasta que haya un espacio y luego comparar si dicha cadena esta en
+el alfabeto, además de almacenar esas cadenas en una LinkedList, el alfabeto
+tambien, puede que puedas usar la clase generica de Pila para poder leer
+los datos caracter por caracter, aunque recientemente me parece más factible
+usar las listas ya que las pilas eliminan el último dato para acceder al siguiente.
+
+(Idea N)Podrias usar una pila, leer caracter por caracter y luego si algun caracter no 
+coincide con el alfabeto mostrarlo o guardarlo, al fin y al cabo tendrás guardada la cadena
+original en otro lado.
+
+Para separar un String se puede hacer uso de String#split(), el cual recibe un
+parametro el cual es el separador.
+
+Si se quiere profundizar más en el programa o si se llega a necesitar en un
+futuro, existe la clase StringBuffer la cual permite modificar una cadena
+así que si en un punto dado se nos solicita que nuestro programa modifique
+la sintaxis ingresada o algo por el estilo, se puede utilizar esta clase.
+
+
+Colas en java:
+https://docs.oracle.com/javase/7/docs/api/java/util/Queue.html
+
+https://yosoy.dev/colas-en-java/
+
+Listas en java:
+https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
+
+String.split():
+https://es.stackoverflow.com/questions/45846/cómo-separar-un-string-en-java-cómo-utilizar-split/45847#45847
+
+StringBuffer en java:
+http://dis.um.es/~lopezquesada/documentos/IES_1213/IAW/curso/UT3/ActividadesAlumnos/15/index.html
+
