@@ -14,6 +14,7 @@ public class Automatas {
   PalabraReservada pr = new PalabraReservada();
   Condicion con = new Condicion();
   Cadenas cad = new Cadenas();
+  Numeral re = new Numeral();
   
   void letras(String cadena){
     let.inicio(cadena);
@@ -69,5 +70,9 @@ public class Automatas {
 
   void cadenas(String cadena) {
     cad.inicio(cadena);
+  }
+
+  void numeral(String cadena) {
+    re.inicio(cadena);
   }
 }

@@ -37,7 +37,7 @@ public class Tablas {
     {"Lib-Mate.lib"},
     {null,"Z' = V","' A ' = C"},
     {null,null,null,null,"A","A","A",null,null,null,null,null,null,null,null,
-     null,null,null,null,null,null,null,null,"B","B","B"},
+     null,null,null,null,null,null,null,null,"B","B","B","R"},
     {null,null,null,null,"} E { ) ( A","} E { ) ( A", "} E { ) ( A"},
     {null,"P",null,null,null,null,null,null,"T","T","T","I"},
     {null,"V O V"},
@@ -49,7 +49,7 @@ public class Tablas {
     {null,null,null,null,"\"\"V | \" A >- I' , \" V | \" A >- I' "},
     {null,null,null,null,"N' G A","N' G A","N' G A"},
     {null,null,null,null,"A","A","A",null,null,null,null,null,null,null,null,
-     null,null,null,null,null,null,null,null,"B","B","B"},
+     null,null,null,null,null,null,null,null,"R","R","R"},
     {null,"B A $"},
     {null,"B A #"},
     {null,null,null,null,null,null,null,null,
@@ -60,7 +60,9 @@ public class Tablas {
      "=<","!"},
     {null,null,null,null,"a","b","c"},
     {null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-     null,null,null,null,null,null,null,null,null,"1","2","3"}
+     null,null,null,null,null,null,null,null,null,"1","2","3","R"},
+     {null,null,null,null,null,null,null,null,null,null,null,null,null,null,
+     null,null,null,null,null,null,null,null,null,"B . B","B . B","B . B"}
     };
 
   //Se crea el objeto de la clase analizador sintactico
@@ -94,6 +96,7 @@ public class Tablas {
     ExpresionesRegulares.repER(splitted);
     ExpresionesRegulares.varER(splitted);
     ExpresionesRegulares.reservadas(splitted);
+    ExpresionesRegulares.reales(splitted);
     /*Si la marca que devuelve la clase de ExpresionesRegulares.java es = null
     significa que la cadena ingresada no forma parte de las expresiones
     regulares, por lo que se devuelve una cadena con "NULL", de otro modo
@@ -173,6 +176,13 @@ public class Tablas {
         else errorTable(split[i]);
         break;
 
+      case "RE":
+        automata.re.inicio(split[i]);
+        if (automata.re.aceptacion)
+          symbolTable(split[i]);
+        else
+          errorTable(split[i]);
+        break;
       /*Si la marca es igual a "NULL" significa que la cadena no pertenece
       a ningún autómata y por lo tanto se manda llamar el método errorTable
       para guardar la cadena en la tabla de errores*/

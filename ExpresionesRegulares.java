@@ -5,12 +5,13 @@ public class ExpresionesRegulares {
   //Se crean variables donde se guardarán la expresiones regulares
   String Letras, Digitos, Operador, Delimitador,Variable,constanteC, Expresion,
          iterador, incremento, condicion, escape, asignacion, biblio, princ,
-         metodo, imprime, mark, palabrasRes, Cadena;
+         metodo, imprime, mark, palabrasRes, Cadena, Reales;
   //En el constructor se delcaran las expresiones regulares
   public ExpresionesRegulares(){
     //Se inicializan las variables con sus respectivas ER
     Letras = "[a-zA-Z]";
     Digitos = "[0-9]";
+    Reales = "\\d+\\.\\d+";
     Cadena = "\""+Letras+"*\"";
     Operador = "\\+\\+|--|\\*\\*|\\/\\/|%%|\\.-|\\.\\+|==|<=|>=|!=|->";
     Delimitador = "<|>|:|\\$|#|=|\"|\\{|\\}|\\(|\\)|'";
@@ -209,6 +210,16 @@ public class ExpresionesRegulares {
     Matcher matcherCad = patronCad.matcher(cadena);
     if (matcherCad.matches()) {
       mark = "ID";
+      return true;
+    }
+    return false;
+  }
+
+  boolean reales(String cadena) {
+    Pattern patronRea = Pattern.compile(Reales);
+    Matcher matcherRea = patronRea.matcher(cadena);
+    if (matcherRea.matches()) {
+      mark = "RE";
       return true;
     }
     return false;

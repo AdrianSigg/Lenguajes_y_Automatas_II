@@ -1,1 +1,1 @@
-Lib-Mate.lib $ a 2 = 3 b ( ) { $ a 2 ** $ b 1 }
+Lib-Mate.lib $ a 2 = 2 . 2 b ( ) { $ a 2 ** $ b 1 }

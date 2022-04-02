@@ -97,6 +97,12 @@ public class IdentificaER {
         System.out.println("Expresión Regular: " + exre.Cadena);
         System.out.println("---------------------------------------------");
       }
+      if (exre.reales(split[i])) {
+        System.out.println("Palabra: " + split[i]);
+        System.out.println("Clasificación: numero real");
+        System.out.println("Expresión Regular: " + exre.Reales);
+        System.out.println("---------------------------------------------");
+      }
     }
   }
 }

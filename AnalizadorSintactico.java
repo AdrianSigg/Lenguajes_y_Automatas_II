@@ -160,6 +160,7 @@ public class AnalizadorSintactico{
       case "G": return 19;
       case "A": return 20;
       case "B": return 21;
+      case "R": return 22;
       default: return -1;
     }
   }
@@ -194,7 +195,7 @@ public class AnalizadorSintactico{
       case "1": return 23;
       case "2": return 24;
       case "3": return 25;
-      case ",": return 26;
+      case ".": return 26;
       case "}": return 27;
       case ">": return 28;
       case "\"": return 29;

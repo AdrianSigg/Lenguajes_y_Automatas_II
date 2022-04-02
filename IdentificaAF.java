@@ -152,6 +152,16 @@ public class IdentificaAF {
           } else
               System.out.println("No cumple con el patron");
           break;
+      case 14:
+          automata.re.inicio(cadena);
+          if (automata.re.aceptacion) {
+              System.out.println("----------------------------");
+              System.out.println("Expresion: " + cadena);
+              System.out.println("Clasificacion: Numero real");
+              System.out.println("Si cumple con el automata");
+          } else
+              System.out.println("No cumple con el patron");
+          break;
       }
   }
 }

@@ -83,7 +83,7 @@ public class Identificador {
     id.datos();
     id.guardarDatos();
     //id.llamaAlf();//llama a la verificacion del alfabeto
-    //id.llamaER();//Llama a la verificacion de expresiones regulares
+    id.llamaER();//Llama a la verificacion de expresiones regulares
     //id.llamaAF();//Llama a la verificacion de automatas finitos
     //id.llamaAn();//Llama a la verificacion del analizador lexico
     //id.llamaAs();// Llama a la verificacion del analizador sintactico
