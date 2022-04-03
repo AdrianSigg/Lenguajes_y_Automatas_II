@@ -4,11 +4,9 @@ import java.util.Hashtable;
 public class AnalizadorSintactico{
   // Se crean Hashtables para guardar los lexemas
   Hashtable<Integer, String> tokenHashtable = new Hashtable<Integer, String>();
-  Hashtable<Integer, String> symbolHashTable = new Hashtable<Integer, String>();
   /*Se utilizan Enum's para representar las tablas generadas de una manera
     mas clara*/
   Enumeration<String> enumerationToken;
-  Enumeration<String> enumerationSymbol;
 
   //Expresiones regulares
   ExpresionesRegulares exre = new ExpresionesRegulares();
@@ -29,7 +27,7 @@ public class AnalizadorSintactico{
   String[] split;
   String[][] matrizPredictiva;
   String[] reservadasTable = {"Lib-Mate.lib","Imp","main()"};
-  int valor = 0, cont = 0, valorAux = 0, repeticiones = 1, indice = 0;
+  int valor = 0, cont = 0, valorAux = 0, repeticiones = 1, indice = 1;
   //Se crean pilas para guardar los datos
   PilaA pilaX = new PilaA();
   Alfabeto alfabeto = new Alfabeto();
@@ -68,7 +66,6 @@ public class AnalizadorSintactico{
             valor(cadena);
             //Se crea una tabla de tokens
             tokenTable(cadena);
-            symbolTable();
             return true;
           }
 
@@ -210,57 +207,15 @@ public class AnalizadorSintactico{
     siguiente de la tabla*/
       if (!tokenHashtable.isEmpty() && !cadena.equals("&")) {
         //Se agrega la llave, el lexema, el tipo de lexema y el tipo
-        tokenHashtable.put(valor, cadena+","+tipoLexema+","+tipo+","+valor2+","+indice);
+        tokenHashtable.put(valor, cadena+","+tipoLexema+","+tipo+","+valor2+",");
         valor++;
         indice++;
       }else if (!tokenHashtable.contains(cadena) && !cadena.equals("&")){
         /*Si la tabla esta vacía se gaurda el valor
         en la posicion 1 de la tabla*/
         //Se agrega la llave, el lexema, el tipo de lexema y el tipo
-        tokenHashtable.put(valor,cadena+","+tipoLexema+","+tipo+","+valor2+","+indice);
+        tokenHashtable.put(valor,cadena+","+tipoLexema+","+tipo+","+valor2+",");
         valor++;
-        indice++;
-      }
-  }
-
-  void symbolTable(){
-    //Se crea la tabla de simbolos
-    
-      //String cadena para guardar el lexema
-      String cad = "";
-      //Se crea variable para la linea
-      int linea = 1;
-      //Se crea arreglo donde 
-      String[] splitted = {};
-
-      //For donde se lee la tabla de tokens y se separan sus datos
-      for (int i = 0; i < tokenHashtable.size(); i++) {
-        //Se separan sus valores con split y se guardan en distintas variables
-        //para posteriormente almacenarlas en la tabla de simbolos
-        splitted = tokenHashtable.get(i).split(",");
-        cad = splitted[0];
-        tipoLexema = splitted[1];
-        tipo = splitted[2];
-        valor3 = splitted[3];
-        indice2 = splitted[4];
-
-        //Se construye una cadena para usar en la hashtable
-        String aux = cad+","+tipoLexema+","+tipo+","+valor3+","+repeticiones+","+linea;
-        
-        //si la tabla ya tiene al menos un dato se guarda  en la siguiente posicion
-        if (!symbolHashTable.isEmpty() && !symbolHashTable.contains(aux)) {
-          //Se crea variable para conocer el tamaño de la tabla
-          int count = symbolHashTable.size();
-          // Se apunta a la siguiente posicion
-          count++;
-          //Se ingresan los datos
-          symbolHashTable.put(count, aux);
-        }else
-          /*
-           * Si la tabla esta vacía
-           * se gaurda el valor en la posicion 1 de la tabla
-           */
-          if (!symbolHashTable.contains(aux)) symbolHashTable.put(1, aux);
       }
   }
 
@@ -268,7 +223,6 @@ public class AnalizadorSintactico{
     /*Se utilizan Enum's para representar las tablas generadas de una manera
     mas clara*/
     enumerationToken = tokenHashtable.elements();
-    enumerationSymbol = symbolHashTable.elements();
   }
 
   void error(String cadena){
@@ -284,15 +238,14 @@ public class AnalizadorSintactico{
       if (!tokenHashtable.isEmpty()) {
         System.out.println("\nTabla de Tokens");
         while (enumerationToken.hasMoreElements())
-          System.out.println(enumerationToken.nextElement());
-      }
-
-      // Si la tabla no esta vacia, muestrra su contenido
-      if (!symbolHashTable.isEmpty()) {
-        System.out.println("\nTabla de Simbolos");
-        while (enumerationSymbol.hasMoreElements())
-          System.out.println(enumerationSymbol.nextElement());
+        System.out.println(enumerationToken.nextElement());
       }
     }
+  }
+
+  void guardavalores(){
+    TablaSimbolos obj = new TablaSimbolos(tokenHashtable, tipo, tipoLexema, valor3, indice2);
+    obj.symbolTable();
+    obj.resultado();
   }
 }

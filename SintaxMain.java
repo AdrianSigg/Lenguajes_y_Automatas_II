@@ -27,6 +27,7 @@ public class SintaxMain {
 
     al.automata();
     al.AnalisisSintactico();
+    al.tablaSimbolos();
   }
 
   public static void main(String[] args) throws FileNotFoundException, 

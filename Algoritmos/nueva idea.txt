@@ -1,8 +1,0 @@
-Meter en una pila las palabras reservadas y pasar esas palabras reservadas a un array list
-para conformar el alfabeto, no solo las palabras, tambien los simbolos y operadores.
-
-Poner las palabras reservadas en distintas pilas ordenadas por sublenguaje, cada una para
-hacer la comparacion con las cadenas
-
-Despues la cadena separarla y comparar con cada pila para saber a cuál pertenecen y guardar en
-un nuevo arraylist? para mostrar posteriormente

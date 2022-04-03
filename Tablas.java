@@ -37,7 +37,7 @@ public class Tablas {
     {"Lib-Mate.lib"},
     {null,"Z' = V","' A ' = C"},
     {null,null,null,null,"A","A","A",null,null,null,null,null,null,null,null,
-     null,null,null,null,null,null,null,null,"B","B","B","R"},
+     null,null,null,null,null,null,null,null,"B","B","B"},
     {null,null,null,null,"} E { ) ( A","} E { ) ( A", "} E { ) ( A"},
     {null,"P",null,null,null,null,null,null,"T","T","T","I"},
     {null,"V O V"},
@@ -49,7 +49,7 @@ public class Tablas {
     {null,null,null,null,"\"\"V | \" A >- I' , \" V | \" A >- I' "},
     {null,null,null,null,"N' G A","N' G A","N' G A"},
     {null,null,null,null,"A","A","A",null,null,null,null,null,null,null,null,
-     null,null,null,null,null,null,null,null,"R","R","R"},
+     null,null,null,null,null,null,null,null,"B","B","B"},
     {null,"B A $"},
     {null,"B A #"},
     {null,null,null,null,null,null,null,null,
@@ -60,9 +60,7 @@ public class Tablas {
      "=<","!"},
     {null,null,null,null,"a","b","c"},
     {null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-     null,null,null,null,null,null,null,null,null,"1","2","3","R"},
-     {null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-     null,null,null,null,null,null,null,null,null,"B . B","B . B","B . B"}
+     null,null,null,null,null,null,null,null,null,"1","2","3"}
     };
 
   //Se crea el objeto de la clase analizador sintactico
@@ -263,6 +261,10 @@ public class Tablas {
     splitted = (tokenHashtable.get(size)).split(",");
     
     AnalizSint.data(splitted[1]);
+  }
+
+  void tablaSimbolos(){
     AnalizSint.resultado();
+    AnalizSint.guardavalores();
   }
 }
