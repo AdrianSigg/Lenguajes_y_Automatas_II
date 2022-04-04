@@ -11,13 +11,14 @@ public class TablaSimbolos {
   Enumeration<String> enumerationSymbol;
 
   String tipo = "", tipoLexema = "", valor;
+  int indice = 1;
 
-  public TablaSimbolos(Hashtable tokenHashTable, String tipo, String tipoLexema, String valor, String indice){
+  public TablaSimbolos(Hashtable tokenHashTable, String tipo, String tipoLexema, String valor){
     this.tokenHashTable = tokenHashTable;
     this.tipo = tipo;
     this.tipoLexema = tipoLexema;
     this.valor = valor;
-    
+
   }
 
   void symbolTable(){
@@ -43,7 +44,8 @@ public class TablaSimbolos {
         valor = splitted[3];
 
         //Se construye una cadena para usar en la hashtable
-        String aux = cad+","+tipoLexema+","+tipo+","+valor+","+linea+",";
+        String aux = cad+","+tipoLexema+","+tipo+","+valor+","+linea+","+1;
+        String auxor = cad+","+tipoLexema+","+tipo+","+valor+","+linea+",";
         
         //si la tabla ya tiene al menos un dato se guarda  en la siguiente posicion
         if (!symbolHashTable.isEmpty() && !symbolHashTable.contains(aux)) {
@@ -52,18 +54,27 @@ public class TablaSimbolos {
           // Se apunta a la siguiente posicion
           count++;
           //Se ingresan los datos
-          symbolHashTable.put(count, aux+repeticiones);
-          repeticiones = 1;
-        }if(symbolHashTable.contains(aux)){
-          symbolHashTable.replace(count, aux+1, aux+2);
-          repeticiones = 1;
+          symbolHashTable.put(count, aux);
         }
-        else
+        //Si está repetido aumentamos el contador de repeticiones
+        else if (!symbolHashTable.isEmpty() && symbolHashTable.contains(aux)) {
+          //Se crea un for para recorrer con el método de remove
+          for (int j = 0; j < symbolHashTable.size(); j++) {
+            //Se quita lo que tiene la tabla de símbolos si existe ya un dato con ese valor
+            symbolHashTable.remove(j,auxor+repeticiones);
+            //Se incrementa el numero de repeticiones
+            repeticiones++;
+            //Se actualiza la tabla ahora con el contador incrementado en 1
+            symbolHashTable.putIfAbsent(j, auxor+repeticiones);
+            repeticiones = 1;
+          }
+          
+        }
           /*
            * Si la tabla esta vacía
            * se gaurda el valor en la posicion 1 de la tabla
            */
-          if (!symbolHashTable.contains(aux)) symbolHashTable.put(1, aux);
+        else if (symbolHashTable.isEmpty()) symbolHashTable.put(0, aux);
           
       }
   }
@@ -75,7 +86,6 @@ public class TablaSimbolos {
   }
 
   void resultado(){
-    System.out.println(symbolHashTable.keySet().iterator().next());
     System.out.println("\nTabla de símbolos");
     enumerations();
       // Si la tabla no esta vacia, muestrra su contenido

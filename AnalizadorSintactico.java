@@ -207,14 +207,14 @@ public class AnalizadorSintactico{
     siguiente de la tabla*/
       if (!tokenHashtable.isEmpty() && !cadena.equals("&")) {
         //Se agrega la llave, el lexema, el tipo de lexema y el tipo
-        tokenHashtable.put(valor, cadena+","+tipoLexema+","+tipo+","+valor2+",");
+        tokenHashtable.put(valor, cadena+","+tipoLexema+","+tipo+","+valor2);
         valor++;
         indice++;
       }else if (!tokenHashtable.contains(cadena) && !cadena.equals("&")){
         /*Si la tabla esta vacía se gaurda el valor
         en la posicion 1 de la tabla*/
         //Se agrega la llave, el lexema, el tipo de lexema y el tipo
-        tokenHashtable.put(valor,cadena+","+tipoLexema+","+tipo+","+valor2+",");
+        tokenHashtable.put(valor,cadena+","+tipoLexema+","+tipo+","+valor2);
         valor++;
       }
   }
@@ -244,7 +244,7 @@ public class AnalizadorSintactico{
   }
 
   void guardavalores(){
-    TablaSimbolos obj = new TablaSimbolos(tokenHashtable, tipo, tipoLexema, valor3, indice2);
+    TablaSimbolos obj = new TablaSimbolos(tokenHashtable, tipo, tipoLexema, valor3);
     obj.symbolTable();
     obj.resultado();
   }
