@@ -101,7 +101,8 @@ public class AnalizadorSintactico{
     if (cadena.equals(variable)) tipo = "simbolo-variable";
     if (cadena.equals(constante)) tipo = "simbolo-constante";
     if (exre.letras(cadena)) tipo = "Identificador";
-    if (exre.numeros(cadena))tipo = "numeros";;
+    if (exre.numeros(cadena))tipo = "numeros";
+    if (exre.reales(cadena)) tipo = "numero decimal";
     if (cadena.equals(igual)) tipo = "simbolo-igual";
     if (cadena.equals(parentesisIzq)) tipo = "parentesis-izq";
     if (cadena.equals(parentesisDer)) tipo = "parentesis-der";
@@ -117,6 +118,7 @@ public class AnalizadorSintactico{
     if (cadena.equals(constante)) tipoLexema = "Constante";
     if (exre.cadenas(cadena)) tipoLexema = "Identificador";
     if (exre.numeros(cadena)) tipoLexema = "Entero";
+    if (exre.reales(cadena)) tipoLexema = "reales";
     if (cadena.equals(igual)) tipoLexema = "Delimitador";
     if (cadena.equals(parentesisIzq)) tipoLexema = "Delimitador";
     if (cadena.equals(parentesisDer)) tipoLexema = "Delimitador";
@@ -247,5 +249,6 @@ public class AnalizadorSintactico{
     TablaSimbolos obj = new TablaSimbolos(tokenHashtable, tipo, tipoLexema, valor3);
     obj.symbolTable();
     obj.resultado();
+    obj.llamaComprobacion();
   }
 }

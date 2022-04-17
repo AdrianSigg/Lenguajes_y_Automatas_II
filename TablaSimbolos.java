@@ -18,15 +18,13 @@ public class TablaSimbolos {
     this.tipo = tipo;
     this.tipoLexema = tipoLexema;
     this.valor = valor;
-
   }
 
   void symbolTable(){
       int count = symbolHashTable.size();
     //Se crea la tabla de simbolos
-      int repeticiones = 1;
       //String cadena para guardar el lexema
-      String cad = "";
+      String cad = "", actualizado = "";
       //Se crea variable para la linea
       int linea = 1;
       //Se crea arreglo donde 
@@ -34,7 +32,7 @@ public class TablaSimbolos {
 
       //For donde se lee la tabla de tokens y se separan sus datos
       for (int i = 0; i < tokenHashTable.size(); i++) {
-        
+        int repeticiones = 1;
         //Se separan sus valores con split y se guardan en distintas variables
         //para posteriormente almacenarlas en la tabla de simbolos
         splitted = tokenHashTable.get(i).split(",");
@@ -44,8 +42,8 @@ public class TablaSimbolos {
         valor = splitted[3];
 
         //Se construye una cadena para usar en la hashtable
-        String aux = cad+","+tipoLexema+","+tipo+","+valor+","+linea+","+1;
-        String auxor = cad+","+tipoLexema+","+tipo+","+valor+","+linea+",";
+        String aux = cad+","+tipoLexema+","+tipo+","+valor+","+linea+","+repeticiones;
+        actualizado = cad+","+tipoLexema+","+tipo+","+valor+","+linea+",";
         
         //si la tabla ya tiene al menos un dato se guarda  en la siguiente posicion
         if (!symbolHashTable.isEmpty() && !symbolHashTable.contains(aux)) {
@@ -56,16 +54,17 @@ public class TablaSimbolos {
           //Se ingresan los datos
           symbolHashTable.put(count, aux);
         }
+        
         //Si está repetido aumentamos el contador de repeticiones
         else if (!symbolHashTable.isEmpty() && symbolHashTable.contains(aux)) {
           //Se crea un for para recorrer con el método de remove
           for (int j = 0; j < symbolHashTable.size(); j++) {
             //Se quita lo que tiene la tabla de símbolos si existe ya un dato con ese valor
-            symbolHashTable.remove(j,auxor+repeticiones);
+            symbolHashTable.remove(j,aux);
             //Se incrementa el numero de repeticiones
             repeticiones++;
             //Se actualiza la tabla ahora con el contador incrementado en 1
-            symbolHashTable.putIfAbsent(j, auxor+repeticiones);
+            symbolHashTable.putIfAbsent(j, actualizado+repeticiones);
             repeticiones = 1;
           }
           
@@ -93,5 +92,11 @@ public class TablaSimbolos {
         while (enumerationSymbol.hasMoreElements())
           System.out.println(enumerationSymbol.nextElement());
       }
+  }
+
+  void llamaComprobacion(){
+      Comprobacion comp = new Comprobacion(symbolHashTable);
+
+      comp.verificarTipo();
   }
 }
