@@ -53,7 +53,7 @@ public class Tablas {
     {null,"B A $"},
     {null,"B A #"},
     {null,null,null,null,null,null,null,null,
-     null,null,null,null,null,null,null,null,"++","--","**","//","%%"},
+     null,null,null,null,null,null,null,null,"++","--","**","==","%%"},
     {null,null,null,null,null,null,null,null,null,null,null,null,null,
      null,null,null,null,null,null,null,null,"-.","+."},
     {null,null,null,null,null,null,null,null,null,null,null,null,"==","=>",
@@ -264,7 +264,7 @@ public class Tablas {
   }
 
   void tablaSimbolos(){
-    AnalizSint.resultado();
+    //AnalizSint.resultado();
     AnalizSint.guardavalores();
   }
 }

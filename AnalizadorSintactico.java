@@ -20,7 +20,7 @@ public class AnalizadorSintactico{
                            "I'","N","N'","V","C","O","K","G","A","B"};
 
   String variable = "$", constante = "#", igual = "=", parentesisIzq = "(", parentesisDer = ")",
-         llaveIzq = "{", llaveDer = "}", multiplicacion = "**", libreria = "Lib-Mate.lib";
+         llaveIzq = "{", llaveDer = "}", igualacion = "==", libreria = "Lib-Mate.lib";
   String tipo = "", tipoLexema = "";
   
   String cadena, terminalInicial = "S", valor2 = "", valor3 = "", indice2 = "";
@@ -108,7 +108,7 @@ public class AnalizadorSintactico{
     if (cadena.equals(parentesisDer)) tipo = "parentesis-der";
     if (cadena.equals(llaveIzq)) tipo = "llave-izq";
     if (cadena.equals(llaveDer)) tipo = "llave-der";
-    if (cadena.equals(multiplicacion)) tipo = "simbolo-multiplicacion";
+    if (cadena.equals(igualacion)) tipo = "simbolo-igualacion";
     if (cadena.equals(libreria)) tipo = "libreria";
   }
 
@@ -124,7 +124,7 @@ public class AnalizadorSintactico{
     if (cadena.equals(parentesisDer)) tipoLexema = "Delimitador";
     if (cadena.equals(llaveIzq)) tipoLexema = "Delimitador";
     if (cadena.equals(llaveDer)) tipoLexema = "Delimitador";
-    if (cadena.equals(multiplicacion)) tipoLexema = "Operador";
+    if (cadena.equals(igualacion)) tipoLexema = "Operador";
     if (cadena.equals(libreria)) tipoLexema = "Palabra-Reservada";
   }
 
@@ -180,14 +180,14 @@ public class AnalizadorSintactico{
       case "Repetir": return 9;
       case "Haz": return 10;
       case "Imp->": return 11;
-      case "==": return 12;
+      case "//": return 12;
       case ">=": return 13;
       case "<=": return 14;
       case "!": return 15;
       case "++": return 16;
       case "--": return 17;
       case "**": return 18;
-      case "//": return 19;
+      case "==": return 19;
       case "%%": return 20;
       case ".-": return 21;
       case ".+": return 22;
@@ -248,7 +248,7 @@ public class AnalizadorSintactico{
   void guardavalores(){
     TablaSimbolos obj = new TablaSimbolos(tokenHashtable, tipo, tipoLexema, valor3);
     obj.symbolTable();
-    obj.resultado();
+    //obj.resultado();
     obj.llamaComprobacion();
   }
 }
